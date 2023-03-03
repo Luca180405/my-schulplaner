@@ -21,20 +21,24 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Screen')),
-      body: Center(
-        child: FloatingActionButton(
+      body: const Center(
+          child: Text(
+        'Wilkommen in der Schulplaner App!',
+        style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+      )),
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           _navigateToNextScreen(context);
         },
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.navigation),
-      ), 
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.add),
       ),
     );
   }
 
   void _navigateToNextScreen(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewScreen()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => NewScreen()));
   }
 }
 
@@ -45,7 +49,7 @@ class NewScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Ereignis adden')),
       body: const Center(
         child: Text(
-          'This is a new screen',
+          'This screen is for events',
           style: TextStyle(fontSize: 24.0),
         ),
       ),

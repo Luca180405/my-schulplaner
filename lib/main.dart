@@ -38,20 +38,22 @@ class HomeScreen extends StatelessWidget {
 
   void _navigateToNextScreen(BuildContext context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => NewScreen()));
+        .push(MaterialPageRoute(builder: (context) => EventScreen()));
   }
 }
 
-class NewScreen extends StatelessWidget {
+class EventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Ereignis adden')),
       body: const Center(
-        child: Text(
-          'This screen is for events',
-          style: TextStyle(fontSize: 24.0),
-        ),
+        child: TextField(
+            decoration: const InputDecoration(
+              border: UnderlineInputBorder(),
+              labelText: 'Enter the description of your event',
+            ),
+          ),
       ),
     );
   }

@@ -47,16 +47,22 @@ class EventScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Ereignis adden')),
-      body: const Center(
+      body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-        child: TextField(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(padding: const EdgeInsets.only(right: 32.0),
+            child: TextField(
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               labelText: 'Enter the title',
             ),
           ),
-          
+            ),
+          ],
+        ),
         ),
       ),
     );

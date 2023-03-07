@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           Text("Willkommen in der Schulplaner App"),
           SizedBox(height: 20,),
-          d
+          
         ],
       )
     );

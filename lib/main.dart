@@ -46,7 +46,7 @@ class EventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Ereignis adden')),
+      appBar: AppBar(title: const Text('Ereignis hinzufügen')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),

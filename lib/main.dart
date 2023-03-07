@@ -73,6 +73,14 @@ class EventScreen extends StatelessWidget {
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Speichern'),
+                style: ElevatedButton.styleFrom(shape: StadiumBorder()),
+              )
             ],
           ),
         ),

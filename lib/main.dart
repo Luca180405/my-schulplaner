@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Screen')),
-      body: const Center(
+      body: Center(
           child: Text(
         'Wilkommen in der Schulplaner App!',
         style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
@@ -74,13 +75,25 @@ class EventScreen extends StatelessWidget {
                 maxLines: null,
               ),
               SizedBox(
-                height: 20,
+                height: 300,
+                child: CupertinoDatePicker(
+                  mode: CupertinoDatePickerMode.dateAndTime,
+                  initialDateTime: DateTime(2023, 1, 1, 12, 00),
+                  onDateTimeChanged: (DateTime newDateTime) {
+                    //Do Some thing
+                  },
+                  use24hFormat: true,
+                  minuteInterval: 1,
+                ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               ElevatedButton(
                 onPressed: () {},
                 child: Text('Speichern'),
                 style: ElevatedButton.styleFrom(shape: StadiumBorder()),
-              )
+              ),
             ],
           ),
         ),

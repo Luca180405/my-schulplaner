@@ -50,19 +50,31 @@ class EventScreen extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(padding: const EdgeInsets.only(right: 32.0),
-            child: TextField(
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              labelText: 'Enter the title',
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 32.0),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Geben Sie den Titel ein',
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Geben Sie die Beschreibung an',
+                ),
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+              ),
+            ],
           ),
-            ),
-          ],
-        ),
         ),
       ),
     );

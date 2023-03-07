@@ -22,18 +22,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Screen')),
-      body: Center(
-          child: Text(
-        'Wilkommen in der Schulplaner App!',
-        style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
-      )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _navigateToNextScreen(context);
-        },
-        backgroundColor: Colors.blue,
-        child: const Icon(Icons.add),
-      ),
+      body: Column(
+        children: [
+          Text("Willkommen in der Schulplaner App"),
+          SizedBox(height: 20,),
+          d
+        ],
+      )
     );
   }
 

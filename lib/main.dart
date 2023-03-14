@@ -72,12 +72,18 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            FloatingActionButton(
-              onPressed: () {
-                _navigateToNextScreen(context);
-              },
-              backgroundColor: Colors.blue,
-              child: const Icon(Icons.add),
+            SizedBox(
+              height: 620,
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: FloatingActionButton(
+                onPressed: () {
+                  _navigateToNextScreen(context);
+                },
+                backgroundColor: Colors.blue,
+                child: const Icon(Icons.add),
+              ),
             ),
           ],
         ));

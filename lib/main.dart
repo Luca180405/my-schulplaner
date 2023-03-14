@@ -99,9 +99,7 @@ class EventPage extends StatefulWidget {
 class _EventPageState extends State<EventPage> {
   DateTime? _chosenDateTime;
 
-  // Show the modal that contains the CupertinoDatePicker
   void _showDatePicker(ctx) {
-    // showCupertinoModalPopup is a built-in function of the cupertino library
     showCupertinoModalPopup(
         context: ctx,
         builder: (_) => Container(
@@ -113,6 +111,8 @@ class _EventPageState extends State<EventPage> {
                     height: 400,
                     child: CupertinoDatePicker(
                         initialDateTime: DateTime.now(),
+                        dateOrder: DatePickerDateOrder.dmy,
+                        use24hFormat: true,
                         onDateTimeChanged: (val) {
                           setState(() {
                             _chosenDateTime = val;
@@ -164,12 +164,15 @@ class _EventPageState extends State<EventPage> {
                 height: 20,
               ),
               Row(children: [
-                Text(_chosenDateTime != null
-                    ? _chosenDateTime.toString()
-                    : 'No date time picked!'),
+                Text(
+                  _chosenDateTime != null
+                      ? _chosenDateTime.toString()
+                      : 'Wählen Sie das Datum aus!',
+                  style: TextStyle(fontSize: 20),
+                ),
                 IconButton(
                   onPressed: () => _showDatePicker(context),
-                  icon: const Icon(Icons.volume_up),
+                  icon: const Icon(Icons.calendar_month),
                 ),
               ]),
               SizedBox(

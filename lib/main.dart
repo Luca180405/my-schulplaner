@@ -85,11 +85,51 @@ class HomeScreen extends StatelessWidget {
 
   void _navigateToNextScreen(BuildContext context) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => EventScreen()));
+        .push(MaterialPageRoute(builder: (context) => EventPage()));
   }
 }
 
-class EventScreen extends StatelessWidget {
+class EventPage extends StatefulWidget {
+  const EventPage({Key? key}) : super(key: key);
+
+  @override
+  State<EventPage> createState() => _EventPageState();
+}
+
+class _EventPageState extends State<EventPage> {
+  DateTime? _chosenDateTime;
+
+  // Show the modal that contains the CupertinoDatePicker
+  void _showDatePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        initialDateTime: DateTime.now(),
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            _chosenDateTime = val;
+                          });
+                        }),
+                  ),
+
+                  // Close the modal
+                  CupertinoButton(
+                    child: const Text('OK'),
+                    onPressed: () => Navigator.of(ctx).pop(),
+                  )
+                ],
+              ),
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,17 +161,17 @@ class EventScreen extends StatelessWidget {
                 maxLines: null,
               ),
               SizedBox(
-                height: 300,
-                child: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.dateAndTime,
-                  initialDateTime: DateTime(2023, 1, 1, 12, 00),
-                  onDateTimeChanged: (DateTime newDateTime) {
-                    //Do Some thing
-                  },
-                  use24hFormat: true,
-                  minuteInterval: 1,
-                ),
+                height: 20,
               ),
+              Row(children: [
+                Text(_chosenDateTime != null
+                    ? _chosenDateTime.toString()
+                    : 'No date time picked!'),
+                IconButton(
+                  onPressed: () => _showDatePicker(context),
+                  icon: const Icon(Icons.volume_up),
+                ),
+              ]),
               SizedBox(
                 height: 10,
               ),

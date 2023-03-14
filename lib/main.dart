@@ -24,7 +24,10 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(title: const Text('Home Screen')),
         body: Column(
           children: [
-            Text("Willkommen in der Schulplaner App"),
+            Text(
+              "Willkommen in der Schulplaner App!",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             SizedBox(
               height: 20,
             ),

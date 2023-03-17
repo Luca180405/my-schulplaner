@@ -107,7 +107,8 @@ class EventPage extends StatefulWidget {
 
 class _EventPageState extends State<EventPage> {
   DateTime? _chosenDateTime;
-  TextEditingController textController = TextEditingController();
+  TextEditingController textController1 = TextEditingController();
+  TextEditingController textController2 = TextEditingController();
 
   void _showDatePicker(ctx) {
     showCupertinoModalPopup(
@@ -143,7 +144,8 @@ class _EventPageState extends State<EventPage> {
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    textController.dispose();
+    textController1.dispose();
+    textController2.dispose();
     super.dispose();
   }
 
@@ -160,7 +162,7 @@ class _EventPageState extends State<EventPage> {
               Padding(
                 padding: const EdgeInsets.only(right: 32.0),
                 child: TextField(
-                  controller: textController,
+                  controller: textController1,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Geben Sie den Titel ein',
@@ -171,6 +173,7 @@ class _EventPageState extends State<EventPage> {
                 height: 20,
               ),
               TextField(
+                controller: textController2,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Geben Sie die Beschreibung an',
@@ -204,7 +207,8 @@ class _EventPageState extends State<EventPage> {
                       return AlertDialog(
                         // Retrieve the text the that user has entered by using the
                         // TextEditingController.
-                        content: Text(textController.text),
+                        content: Text(
+                            textController1.text + "\n" + textController2.text),
                       );
                     },
                   );

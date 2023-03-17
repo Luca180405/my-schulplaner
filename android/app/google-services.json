@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "904679322459",
+    "project_id": "schulplaner-a4b76",
+    "storage_bucket": "schulplaner-a4b76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904679322459:android:ba58bd3414ddbc3d83607e",
+        "android_client_info": {
+          "package_name": "com.example.gitpod_flutter_quickstart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904679322459-277sfcnvuscrqcnh163rile63q4ogaqi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqu9S5g0tuimpt6__1yzL3ZOo1B1lkBSs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904679322459-277sfcnvuscrqcnh163rile63q4ogaqi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

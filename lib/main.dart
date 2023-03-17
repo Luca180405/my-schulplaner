@@ -109,6 +109,7 @@ class _EventPageState extends State<EventPage> {
   DateTime? _chosenDateTime;
   TextEditingController textController1 = TextEditingController();
   TextEditingController textController2 = TextEditingController();
+  TextEditingController textControllerDate = TextEditingController();
 
   void _showDatePicker(ctx) {
     showCupertinoModalPopup(
@@ -130,8 +131,6 @@ class _EventPageState extends State<EventPage> {
                           });
                         }),
                   ),
-
-                  // Close the modal
                   CupertinoButton(
                     child: const Text('OK'),
                     onPressed: () => Navigator.of(ctx).pop(),
@@ -146,6 +145,7 @@ class _EventPageState extends State<EventPage> {
     // Clean up the controller when the widget is disposed.
     textController1.dispose();
     textController2.dispose();
+    textControllerDate.dispose();
     super.dispose();
   }
 
@@ -207,8 +207,11 @@ class _EventPageState extends State<EventPage> {
                       return AlertDialog(
                         // Retrieve the text the that user has entered by using the
                         // TextEditingController.
-                        content: Text(
-                            textController1.text + "\n" + textController2.text),
+                        content: Text(textController1.text +
+                            "\n" +
+                            textController2.text +
+                            "\n" +
+                            _chosenDateTime.toString()),
                       );
                     },
                   );

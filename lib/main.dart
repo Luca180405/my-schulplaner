@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Schulplaner App',
       theme: ThemeData(primarySwatch: Colors.blue),
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
@@ -107,6 +107,7 @@ class EventPage extends StatefulWidget {
 
 class _EventPageState extends State<EventPage> {
   DateTime? _chosenDateTime;
+  TextEditingController textController = TextEditingController();
 
   void _showDatePicker(ctx) {
     showCupertinoModalPopup(
@@ -140,6 +141,13 @@ class _EventPageState extends State<EventPage> {
   }
 
   @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Ereignis hinzufügen')),
@@ -152,6 +160,7 @@ class _EventPageState extends State<EventPage> {
               Padding(
                 padding: const EdgeInsets.only(right: 32.0),
                 child: TextField(
+                  controller: textController,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Geben Sie den Titel ein',
@@ -188,7 +197,18 @@ class _EventPageState extends State<EventPage> {
                 height: 10,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        // Retrieve the text the that user has entered by using the
+                        // TextEditingController.
+                        content: Text(textController.text),
+                      );
+                    },
+                  );
+                },
                 child: Text('Speichern'),
                 style: ElevatedButton.styleFrom(shape: StadiumBorder()),
               ),

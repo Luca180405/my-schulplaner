@@ -29,6 +29,13 @@
             {
               "client_id": "904679322459-277sfcnvuscrqcnh163rile63q4ogaqi.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "904679322459-aqt2abht81t3q57i7l35jogkofns7i22.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gitpodFlutterQuickstart"
+              }
             }
           ]
         }

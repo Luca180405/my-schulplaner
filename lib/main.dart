@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -107,8 +111,8 @@ class EventPage extends StatefulWidget {
 
 class _EventPageState extends State<EventPage> {
   DateTime? _chosenDateTime;
-  TextEditingController textController1 = TextEditingController();
-  TextEditingController textController2 = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController describController = TextEditingController();
   TextEditingController textControllerDate = TextEditingController();
 
   void _showDatePicker(ctx) {
@@ -143,8 +147,8 @@ class _EventPageState extends State<EventPage> {
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    textController1.dispose();
-    textController2.dispose();
+    titleController.dispose();
+    describController.dispose();
     textControllerDate.dispose();
     super.dispose();
   }
@@ -162,7 +166,7 @@ class _EventPageState extends State<EventPage> {
               Padding(
                 padding: const EdgeInsets.only(right: 32.0),
                 child: TextField(
-                  controller: textController1,
+                  controller: titleController,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Geben Sie den Titel ein',
@@ -173,7 +177,7 @@ class _EventPageState extends State<EventPage> {
                 height: 20,
               ),
               TextField(
-                controller: textController2,
+                controller: describController,
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
                   labelText: 'Geben Sie die Beschreibung an',
@@ -201,20 +205,12 @@ class _EventPageState extends State<EventPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        // Retrieve the text the that user has entered by using the
-                        // TextEditingController.
-                        content: Text(textController1.text +
-                            "\n" +
-                            textController2.text +
-                            "\n" +
-                            _chosenDateTime.toString()),
-                      );
-                    },
-                  );
+                  CollectionReference collRef= FirebaseFirestore.instance.collection("event");
+                  collRef.add({
+                    'Title': titleController.text,
+                    'Description': describController.text,
+                    'Date&Time':textControllerDate.text,
+                  });
                 },
                 child: Text('Speichern'),
                 style: ElevatedButton.styleFrom(shape: StadiumBorder()),

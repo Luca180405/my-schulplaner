@@ -205,11 +205,12 @@ class _EventPageState extends State<EventPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  CollectionReference collRef= FirebaseFirestore.instance.collection("event");
+                  CollectionReference collRef =
+                      FirebaseFirestore.instance.collection("event");
                   collRef.add({
                     'Title': titleController.text,
                     'Description': describController.text,
-                    'Date&Time':textControllerDate.text,
+                    'Date&Time': textControllerDate.text,
                   });
                 },
                 child: Text('Speichern'),

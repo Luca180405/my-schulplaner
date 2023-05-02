@@ -24,6 +24,22 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text('Home Screen')),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.call),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.camera),
+              label: 'Kalendar',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.chat),
+              label: 'Aufgaben',
+            ),
+          ],
+        ),
         body: Column(
           children: [
             Text(
@@ -78,7 +94,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 620,
+              height: 500,
             ),
             Align(
               alignment: Alignment.bottomRight,

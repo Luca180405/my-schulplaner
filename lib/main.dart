@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -215,13 +214,9 @@ class _EventPageState extends State<EventPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  CollectionReference collRef =
-                      FirebaseFirestore.instance.collection("event");
-                  collRef.add({
-                    'Title': titleController.text,
-                    'Description': describController.text,
-                    'Date&Time': textControllerDate.text,
-                  });
+                  //titleController.text,
+                  //describController.text,
+                  //textControllerDate.text,
                 },
                 child: Text('Speichern'),
                 style: ElevatedButton.styleFrom(shape: StadiumBorder()),

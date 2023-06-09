@@ -42,7 +42,7 @@ class _NotesPageState extends State<NotesPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(
-            'Notes',
+            'Schulplaner',
             style: TextStyle(fontSize: 24),
           ),
           actions: [Icon(Icons.search), SizedBox(width: 12)],
@@ -52,7 +52,7 @@ class _NotesPageState extends State<NotesPage> {
               ? CircularProgressIndicator()
               : notes.isEmpty
                   ? Text(
-                      'No Notes',
+                      'Keine Einträge',
                       style: TextStyle(color: Colors.white, fontSize: 24),
                     )
                   : buildNotes(),
